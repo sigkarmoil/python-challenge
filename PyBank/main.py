@@ -1,28 +1,49 @@
-import pandas as pd
-pd.options.display.float_format = '{:.2f}%'.format
+import os
+import csv
+import statistics
 
-df = pd.read_csv(r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\Resources\budget_data.csv')
-print(df.head() )
+fin_data_month= []
+fin_data_money= []
+
+#opening the file
+#Remember to fix the csv path later
+#csvpath= os.path.join('Resources','budget_data.csv')
+csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\Resources\budget_data.csv')
+with open(csvpath, 'r') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+    #object type
+    
+    csv_header = next(csvreader)
+    
+    for rows in csvreader:
+        fin_data_month.append(rows[0])
+        fin_data_money.append(int(rows[1]) )
 
 
+money_sum = 0
+for entries in fin_data_money:
+    money_sum = money_sum + entries
 
-unq_date = df["Date"].count()
-print(f"total number of months are:  {unq_date}")
+#calculating changes in profit
+delta_money_cal=0
+delta_money = []
+for j in range(len(fin_data_money)-1 ):
+    delta_money_cal= fin_data_money[j+1] - fin_data_money[j]
+    delta_money.append(delta_money_cal)
 
-PnL = df["Profit/Losses"].sum()
-print(f"Total profit / losses are: {PnL}")
+#Code to adjust decimal number in float
+mean_delta_money= statistics.mean(delta_money)
 
-delta = df["Profit/Losses"].pct_change()
-avg_delta = (delta.mean())
-avg_delta_per= format(avg_delta, ".2%")
-print(f"Average changes are: {avg_delta_per}")
+#print out to csv
 
-max_delta = (delta.max() )
-max_delta_per = format( max_delta, ".2%" )
-print(f"Max profit changes are: {max_delta_per}")
-
-min_delta = (delta.min() )
-min_delta_per = format(min_delta, ".2%")
-print(f"Min profit changes are: {min_delta_per}")
-
-#df.to_csv(r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\analysis\PyBank.csv', index = False)
+csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\analysis\analysis.csv")
+# csv_output=os.path.join("..","analysis","analysis.csv")
+with open(csv_output,'w') as csv_writer:
+    csv_writer = csv.writer(csv_writer, delimiter=',')
+    csv_writer.writerow(['Financial Analysis'])
+    csv_writer.writerow(["---------------------------------"])
+    csv_writer.writerow([f"Total Months: {len(fin_data_month)}"])
+    csv_writer.writerow([f"Total: ${money_sum}"] )
+    csv_writer.writerow([f"Average Change: ${mean_delta_money}"])
+    csv_writer.writerow([f"Greatest Increase in Profits: ${max(delta_money)} "])
+    csv_writer.writerow([f"Smallest Decrease in Profits: ${min(delta_money)} "])
