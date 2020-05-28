@@ -8,7 +8,7 @@ poll_candidate = []
 
 #1. opening the file
 #Remember to fix the csv path later
-#csvpath= os.path.join('Resources','budget_data.csv')
+#csvpath= os.path.join('..','Resources','election_data.csv')
 csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyPoll\Resources\election_data.csv')
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
