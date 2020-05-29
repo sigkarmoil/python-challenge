@@ -25,7 +25,7 @@ paragraph_letter=read_paragraph.split(" ")
 word_length=[]
 for words in paragraph_letter:
     word_length.append( len(words) )
-print(f"Approximate letter count (per word): {statistics.mean(word_length) }" )
+print(f"Approximate letter count (per word): { round(statistics.mean(word_length),3) } " )
 
 #count average words in a sentence
 words_in_sentence=[]
@@ -34,7 +34,7 @@ for words in paragraph_sentence:
 word_count_per_sentence=[]
 for j in words_in_sentence:
     word_count_per_sentence.append(len(j) )
-print(f"Average sentence length (in words): {statistics.mean(word_count_per_sentence)}"  )
+print(f"Average sentence length (in words): { round(statistics.mean(word_count_per_sentence),3) } "  )
 
 
     

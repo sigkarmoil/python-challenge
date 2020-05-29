@@ -44,7 +44,7 @@ for x in poll_candidate:
 def myformat(x):
     return ('%.2f' % x).rstrip('0').rstrip('.')
 csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyPoll\analysis\analysis.csv")
-with open(csv_output,'w') as csv_writer:
+with open(csv_output,'w', newline='') as csv_writer:
     csv_writer = csv.writer(csv_writer, delimiter=',')
     csv_writer.writerow([ f"Election Results" ])
     csv_writer.writerow([ f"----------------------------------- " ])

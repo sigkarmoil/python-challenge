@@ -38,12 +38,12 @@ mean_delta_money= statistics.mean(delta_money)
 
 csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\analysis\analysis.csv")
 # csv_output=os.path.join("..","analysis","analysis.csv")
-with open(csv_output,'w') as csv_writer:
+with open(csv_output,'w', newline='') as csv_writer:
     csv_writer = csv.writer(csv_writer, delimiter=',')
     csv_writer.writerow(['Financial Analysis'])
     csv_writer.writerow(["---------------------------------"])
     csv_writer.writerow([f"Total Months: {len(fin_data_month)}"])
     csv_writer.writerow([f"Total: ${money_sum}"] )
-    csv_writer.writerow([f"Average Change: ${mean_delta_money}"])
+    csv_writer.writerow([f"Average Change: ${round(mean_delta_money, 4) }"])
     csv_writer.writerow([f"Greatest Increase in Profits: ${max(delta_money)} "])
     csv_writer.writerow([f"Smallest Decrease in Profits: ${min(delta_money)} "])

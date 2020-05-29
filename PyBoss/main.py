@@ -8,6 +8,7 @@ name= []
 dob= []
 SSN = []
 state= []
+header =["EMP ID", "First Name", "Last Name", "DOB", "SSN", "State"]
 
 #opening the file
 #Remember to fix the csv path later
@@ -92,25 +93,35 @@ SSN_censored=[]
 for x in range(len(dob)):
     SSN_censored.append("***-**-"+ (SSN[x][7:]))
 
-
 #3. Format States
 state_translated=[]
 for x in state:
     state_translated.append(us_state_abbrev[x])
 
 
-#4 replace Name Format
+#4 Splitting Up Name
 name2=[]
+First_name=[]
+Last_name=[]
+#splitting from full name
 for x in range(len(name)):
-    name2.append( re.sub(" ", "," ,name[x] ) )
+    name2.append( name[x].split(" ") )
+
+#assigning to First and Last name
+for y in range(len(name2)):
+    First_name.append(name2[y][0])
+    Last_name.append( name2[y][-1] )
 
 
+#5 zipping all up
+zip_boss=zip(emp_id,First_name , Last_name, dob1,SSN_censored,state_translated)
 
-#5 #print out to csv
+
+#6 #print out to csv
 csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBoss\analysis.csv")
 #csv_output=os.path.join("..","analysis","analysis.csv")
-with open(csv_output,'w') as csv_writer:
-    csv_writer = csv.writer(csv_writer, delimiter=',')
-    csv_writer.writerow([f"EMP ID, First Name, Last Name, DOB, SSN, State"])
-    for x in range(len(state_translated)):
-        csv_writer.writerow([f"{emp_id[x]},{name2[x]},{dob1[x]},{SSN_censored[x]},{state_translated[x]}"])
+with open(csv_output,'w',newline='') as csv_writer:
+    csv_writer = csv.writer(csv_writer)
+    csv_writer.writerow(["EMP ID", "First Name", "Last Name", "DOB", "SSN", "State"])
+    csv_writer.writerows(zip_boss)
+    
