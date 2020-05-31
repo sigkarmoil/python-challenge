@@ -7,8 +7,8 @@ fin_data_money= []
 
 #opening the file
 #Remember to fix the csv path later
-#csvpath= os.path.join('Resources','budget_data.csv')
-csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\Resources\budget_data.csv')
+csvpath= os.path.join('Resources','budget_data.csv')
+#csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\Resources\budget_data.csv')
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     #object type
@@ -36,8 +36,8 @@ mean_delta_money= statistics.mean(delta_money)
 
 #print out to csv
 
-csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\analysis\analysis.csv")
-# csv_output=os.path.join("..","analysis","analysis.csv")
+#csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBank\analysis\analysis.csv")
+csv_output=os.path.join("analysis","analysis.csv")
 with open(csv_output,'w', newline='') as csv_writer:
     csv_writer = csv.writer(csv_writer, delimiter=',')
     csv_writer.writerow(['Financial Analysis'])

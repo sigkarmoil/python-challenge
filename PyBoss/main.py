@@ -12,8 +12,8 @@ header =["EMP ID", "First Name", "Last Name", "DOB", "SSN", "State"]
 
 #opening the file
 #Remember to fix the csv path later
-#csvpath= os.path.join('Resources','budget_data.csv')
-csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBoss\employee_data.csv')
+csvpath= os.path.join('employee_data.csv')
+#csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBoss\employee_data.csv')
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
@@ -118,8 +118,8 @@ zip_boss=zip(emp_id,First_name , Last_name, dob1,SSN_censored,state_translated)
 
 
 #6 #print out to csv
-csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBoss\analysis.csv")
-#csv_output=os.path.join("..","analysis","analysis.csv")
+#csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyBoss\analysis.csv")
+csv_output=os.path.join("analysis.csv")
 with open(csv_output,'w',newline='') as csv_writer:
     csv_writer = csv.writer(csv_writer)
     csv_writer.writerow(["EMP ID", "First Name", "Last Name", "DOB", "SSN", "State"])

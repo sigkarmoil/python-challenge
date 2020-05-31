@@ -8,8 +8,8 @@ poll_candidate = []
 
 #1. opening the file
 #Remember to fix the csv path later
-#csvpath= os.path.join('..','Resources','election_data.csv')
-csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyPoll\Resources\election_data.csv')
+csvpath= os.path.join('Resources','election_data.csv')
+#csvpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyPoll\Resources\election_data.csv')
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     #object type
@@ -43,7 +43,8 @@ for x in poll_candidate:
 #2.4 For Loop to print the candidates performances
 def myformat(x):
     return ('%.2f' % x).rstrip('0').rstrip('.')
-csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyPoll\analysis\analysis.csv")
+#csv_output=(r"C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyPoll\analysis\analysis.csv")
+csv_output=os.path.join('analysis','analysis.csv')
 with open(csv_output,'w', newline='') as csv_writer:
     csv_writer = csv.writer(csv_writer, delimiter=',')
     csv_writer.writerow([ f"Election Results" ])

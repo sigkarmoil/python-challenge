@@ -1,8 +1,10 @@
 import re
 import statistics
+import os
 
 #using paragraph 2 in resources
-txtpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyParagraph\raw_data\paragraph_2.txt')
+#txtpath= (r'C:\Users\haeze\OneDrive\Documents\GitHub\python-challenge\PyParagraph\raw_data\paragraph_2.txt')
+txtpath = os.path.join('raw_data','paragraph_2.txt')
 paragraph=open(txtpath,"r")
 
 read_paragraph=paragraph.read()
